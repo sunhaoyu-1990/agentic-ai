@@ -122,25 +122,28 @@ FEISHU_BITABLE_EXPENSE_TABLE=tblxxxxxxxx
 
 ---
 
-## 5. 飞书 OAuth 授权（你手动做的唯一步骤）
+## 5. 飞书 OAuth 授权
 
-这一步需要你在浏览器里操作，龙虾帮不了。
-
-### 5.1 配置重定向地址
+### 5.1 配置重定向地址（手动，一次性）
 
 1. 打开 https://open.feishu.cn/ → 开发者后台 → 选择你的应用
 2. 进入「安全设置」→「重定向 URL」
 3. 添加：`http://localhost:8080/callback`
 
-### 5.2 获取授权 code
+> 只需要配置一次，之后不用重复操作。
 
-在浏览器打开（替换 YOUR_APP_ID）：
+### 5.2 获取授权链接（发给龙虾）
 
 ```
-https://open.feishu.cn/open-apis/authen/v1/index?redirect_uri=http://localhost:8080/callback&app_id=YOUR_APP_ID
+请根据 ~/projects/agentic-ai/financial-automation/.env.local 里的 FEISHU_APP_ID，
+帮我生成飞书 OAuth 授权链接：
+
+redirect_uri 使用：http://localhost:8080/callback
+
+把完整的授权链接发给我，我直接点击完成授权。
 ```
 
-完成登录授权后，浏览器跳转到：
+龙虾会返回一条可点击的链接。在浏览器打开后完成飞书登录授权，浏览器会跳转到：
 
 ```
 http://localhost:8080/callback?code=XXXXXX
